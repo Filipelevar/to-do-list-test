@@ -27,6 +27,8 @@ const t = initTRPC.context<TRPCContext>().create({
   },
 });
 
+// The service throws plain domain errors and knows nothing about HTTP.
+// This middleware maps them to tRPC codes (TaskNotFoundError -> NOT_FOUND).
 const domainErrors = t.middleware(async ({ next }) => {
   const result = await next();
   if (!result.ok && result.error.cause instanceof TaskNotFoundError) {

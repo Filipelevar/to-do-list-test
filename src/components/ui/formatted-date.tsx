@@ -5,6 +5,9 @@ import { useSyncExternalStore } from "react";
 
 const subscribe = () => () => {};
 
+// Server and browser can be in different time zones. SSR and hydration render
+// a neutral UTC date, then the client switches to the local label, which
+// avoids a hydration mismatch.
 export function FormattedDate({ date }: { date: Date }) {
   const isClient = useSyncExternalStore(
     subscribe,

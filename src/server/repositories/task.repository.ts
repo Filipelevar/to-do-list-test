@@ -48,6 +48,8 @@ export class InMemoryTaskRepository implements TaskRepository {
   }
 }
 
+// Kept on globalThis so Next.js hot reload in dev does not reset the data.
+// It is still lost when the server process restarts.
 const globalForRepository = globalThis as unknown as {
   taskRepository?: TaskRepository;
 };

@@ -33,7 +33,7 @@ and the app uses an **in-memory** store (there is no database).
 Requirements: **Node.js 20+** and **Yarn** (the version is pinned in `package.json` via Corepack).
 
 ```bash
-corepack enable  
+corepack enable
 yarn install
 yarn dev
 ```

@@ -21,7 +21,8 @@ export class TaskNotFoundError extends Error {
 const compareNewestFirst = (a: Task, b: Task) =>
   b.dataCriacao.getTime() - a.dataCriacao.getTime() || b.id.localeCompare(a.id);
 
-
+// The cursor is "<createdAt>_<id>" of the last task on the page. Unlike an
+// offset, it does not skip or repeat tasks when others are created or deleted.
 const encodeCursor = (task: Task) => `${task.dataCriacao.getTime()}_${task.id}`;
 
 const decodeCursor = (cursor: string): Task | null => {
